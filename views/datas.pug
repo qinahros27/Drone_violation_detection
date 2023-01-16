@@ -1,0 +1,72 @@
+doctype html
+html
+    header
+        title Main Page 
+        link(rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous")
+    body
+        div
+            h2.text-center.font-weight-bold.text-danger INFORMATION OF ALL THE PILOTS VIOLATED THE NDZ PERIMETER
+            div.text-center
+                a(href='/visualization').btn.btn-link Positions Visualization
+            br
+            h3.text-center.font-weight-bold.text-danger THE NEAREST DRONES
+            table.table.table-hover
+                tbody
+                    tr.font-weight-bold.table-secondary
+                        td Serial Number
+                        td Pilot Name
+                        td Pilot Email
+                        td Pilot Phone
+                        td Distance to the nest (x position)
+                        td Distance to the nest (y position)
+                        td Nearest (Yes/No) 
+                        td Number Of Violations
+                    each data in datas
+                        tr
+                            if data.Nearest == "Yes"
+                                td.font-weight-bold.text-danger #{data.serialNumber}
+                                td.font-weight-bold.text-danger #{data.PilotName}
+                                td.font-weight-bold.text-danger #{data.PilotEmail}
+                                td.font-weight-bold.text-danger #{data.PilotPhone}
+                                td.font-weight-bold.text-danger #{data.Posx}
+                                td.font-weight-bold.text-danger #{data.Posy}
+                                td.font-weight-bold.text-danger #{data.Nearest} 
+                                td.font-weight-bold.text-danger #{data.NumberOfViolations}
+            br
+            h3.text-center.font-weight-bold.text-danger OTHER DRONES
+            table.table.table-hover
+                tbody
+                    tr.font-weight-bold.table-secondary
+                        td Serial Number
+                        td Pilot Name
+                        td Pilot Email
+                        td Pilot Phone
+                        td Distance to the nest (x position)
+                        td Distance to the nest (y position)
+                        td Nearest (Yes/No) 
+                        td Number Of Violations
+                    each data in datas
+                        tr
+                            if data.Nearest == "No"
+                                if data.NumberOfViolations == 10 
+                                    td.font-weight-bold.text-danger #{data.serialNumber}
+                                    td.font-weight-bold.text-danger #{data.PilotName}
+                                    td.font-weight-bold.text-danger #{data.PilotEmail}
+                                    td.font-weight-bold.text-danger #{data.PilotPhone}
+                                    td.font-weight-bold.text-danger #{data.Posx}
+                                    td.font-weight-bold.text-danger #{data.Posy}
+                                    td.font-weight-bold.text-danger #{data.Nearest} 
+                                    td.font-weight-bold.text-danger #{data.NumberOfViolations} (This device need to be ban!!!!)
+                                else 
+                                    td #{data.serialNumber}
+                                    td #{data.PilotName}
+                                    td #{data.PilotEmail}
+                                    td #{data.PilotPhone}
+                                    td #{data.Posx}
+                                    td #{data.Posy}
+                                    td #{data.Nearest} 
+                                    td #{data.NumberOfViolations} 
+    script 
+        include script.js 
+ 
+

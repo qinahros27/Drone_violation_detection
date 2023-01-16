@@ -1,0 +1,1 @@
+setTimeout(location.reload.bind(location), 2000);
